@@ -2,18 +2,16 @@ import { useFormik } from "formik";
 import * as Yup from "yup"
 
 
-function NewTask({ onSubmitEvent }) {
+function NewTask({ onSubmitHandle }) {
     const form = useFormik({
         initialValues: {
             newTask: "",
-            status: false
         },
         validationSchema: Yup.object({
             newTask: Yup.string().required("Ingresa una tarea válida").max(30, "Máximo 30 caracteres"),
-            status: Yup.bool().required()
         }),
         onSubmit: (values) => {
-            onSubmitEvent(values);
+            onSubmitHandle(values);
             form.resetForm();
         }
     });

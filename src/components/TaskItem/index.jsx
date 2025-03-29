@@ -1,8 +1,13 @@
-function TaskItem({ taskData }) {
+function TaskItem({ taskData, onSubmitHandle }) {
     return (
-        <div key={taskData.newTask}>
-            <input type="checkbox" checked={taskData.status} />
-            <h4>{taskData.newTask}</h4>
+        <div key={taskData.id}>
+            <input
+                id={taskData.id}
+                checked={taskData.status}
+                type="checkbox"
+                onChange={onSubmitHandle}
+            />
+            <h4>{taskData.task}</h4>
         </div>
     );
 };
