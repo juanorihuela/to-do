@@ -1,11 +1,15 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { v4 as uuidv4 } from "uuid";
 
 import NewTask from "./components/NewTask"
+import Card from "./components/Card"
+import TaskItem from "./components/TaskItem"
 
 
 function App() {
   const [tasks, setTasks] = useState({inProgress: [], completed: []});
+  const [inProgressItems, setInProgressItems] = useState([]);
+  const [completedItems, setCompletedItems] = useState([]);
 
   const onSubmitHandle = (values) => {
     const taskValues = {
@@ -23,10 +27,33 @@ function App() {
     }));
   };
 
+  const onChangeHandle = (event) => {
+    const taskId = event.target.id;
+  };
+
+  useEffect(() => {
+    const inProgressItems = tasks.inProgress.map((task) => (
+      <TaskItem key={task.id} taskData={task} onSubmitHandle={onChangeHandle} />
+    ));
+    setInProgressItems(inProgressItems);
+
+    const completedItems = tasks.completed.map((task) => (
+      <TaskItem key={task.id} taskData={task} onSubmitHandle={onChangeHandle} />
+    ))
+    setCompletedItems(completedItems);
+  }, [tasks]);
+
   return (
     <div>
       <div id="formSection">
         <NewTask onSubmitHandle={onSubmitHandle} />
+      </div>
+
+      <div id="tasksSection">
+        <Card 
+          inProgressList={inProgressItems}
+          completedList={completedItems}
+        />
       </div>
     </div>
   );
