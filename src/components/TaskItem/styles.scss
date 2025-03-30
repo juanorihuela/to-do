@@ -1,0 +1,18 @@
+.itemContainer {
+    display: flex;
+    gap: 1rem;
+
+    input {
+        width: 1rem;
+    }
+
+    .taskValue {
+        color: #A5BFCC;
+        font-size: 1rem;
+    }
+
+    .completed {
+        text-decoration: line-through;
+        font-style: italic;
+    }
+}

@@ -25,7 +25,7 @@ function NewTask({ onSubmitHandle }) {
                     id="newTask"
                     name="newTask"
                     type="text"
-                    placeholder="Ingresa nueva tarea"
+                    placeholder="Ingresa una nueva tarea"
                     autoComplete="off"
                     onChange={form.handleChange}
                     onBlur={form.handleBlur}

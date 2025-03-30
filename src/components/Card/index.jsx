@@ -1,13 +1,18 @@
+import "./styles.scss"
+
+
 function Card({ inProgressList, completedList }) {
     return (
-        <div>
-            <div className="inProgressTask">
-                <h4>en progreso</h4>
+        <div className="cardContainer">
+            <h4 className="cardTitle">en progreso</h4>
+            <div className="inProgressContent">
                 {inProgressList}
             </div>
+
             <hr />
-            <div className="completedTask">
-                <h4>completadas</h4>
+
+            <h4 className="cardTitle">completadas</h4>
+            <div className="completedContent">
                 {completedList}
             </div>
         </div>
