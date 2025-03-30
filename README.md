@@ -13,8 +13,7 @@ App to-do generica
 ## Instalación  
 
 ### clonar repositorio
-`git clone <URL_REPO>`
-`cd nombre-del-proyecto`  
+`git clone <URL_REPO>`  
 
 ### instalar paquetes  
 Instala los paquetes usando yarn  
