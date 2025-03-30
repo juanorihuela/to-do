@@ -1,0 +1,40 @@
+#newTaskForm {
+    .formRow {
+        display: flex;
+        gap: 0.5rem;
+
+        input {
+            height: 3rem;
+            width: 100%;
+            border-radius: 15px;
+            border-width: 1px;
+            border-color: #4C585B;
+
+            color: #4C585B;
+            text-align: center;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 1.5rem;
+        }
+
+        button {
+            background-color: #A5BFCC;
+            cursor: pointer;
+            transition: 0.3s;
+            border-style: none;
+            border-radius: 15px;
+            padding: 0 1.5rem;
+
+            color: #4C585B;
+            font-size: 1rem;
+        }
+        button:hover {
+            background-color: #4C585B;
+            color: #F4EDD3;
+        }
+    }
+
+    .errorMessage {
+        color: #D71313;
+        font-family: Arial, Helvetica, sans-serif;
+    }
+}

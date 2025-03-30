@@ -5,6 +5,8 @@ import NewTask from "./components/NewTask"
 import Card from "./components/Card"
 import TaskItem from "./components/TaskItem"
 
+import "./styles.scss"
+
 
 function App() {
   const [tasks, setTasks] = useState({ inProgress: [], completed: [] });

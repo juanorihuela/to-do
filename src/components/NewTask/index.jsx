@@ -1,6 +1,8 @@
 import { useFormik } from "formik";
 import * as Yup from "yup"
 
+import "./styles.scss"
+
 
 function NewTask({ onSubmitHandle }) {
     const form = useFormik({
@@ -17,24 +19,27 @@ function NewTask({ onSubmitHandle }) {
     });
 
     return (
-        <form onSubmit={form.handleSubmit}>
-            <input
-                id="newTask"
-                name="newTask"
-                type="text"
-                placeholder="Ingresa nueva tarea"
-                autoComplete="off"
-                onChange={form.handleChange}
-                onBlur={form.handleBlur}
-                value={form.values.newTask}
-            />
-            {form.touched && form.errors.newTask ? (
-                <small>{form.errors.newTask}</small>
-            ) : null }
+        <form id="newTaskForm" onSubmit={form.handleSubmit}>
+            <div className="formRow">
+                <input
+                    id="newTask"
+                    name="newTask"
+                    type="text"
+                    placeholder="Ingresa nueva tarea"
+                    autoComplete="off"
+                    onChange={form.handleChange}
+                    onBlur={form.handleBlur}
+                    value={form.values.newTask}
+                />
 
-            <button type="submit">Guardar</button>
+                <button type="submit">Guardar</button>
+            </div>
+
+            {form.touched && form.errors.newTask ? (
+                <small className="errorMessage">* {form.errors.newTask}</small>
+            ) : null}
         </form>
     );
-}
+};
 
 export default NewTask;
