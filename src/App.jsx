@@ -7,13 +7,13 @@ import TaskItem from "./components/TaskItem"
 
 
 function App() {
-  const [tasks, setTasks] = useState({inProgress: [], completed: []});
+  const [tasks, setTasks] = useState({ inProgress: [], completed: [] });
   const [inProgressItems, setInProgressItems] = useState([]);
   const [completedItems, setCompletedItems] = useState([]);
 
   const onSubmitHandle = (values) => {
     const taskValues = {
-      id: uuidv4(), 
+      id: uuidv4(),
       task: values.newTask,
       status: false
     }
@@ -29,6 +29,22 @@ function App() {
 
   const onChangeHandle = (event) => {
     const taskId = event.target.id;
+
+    if (event.target.checked) {
+      const taskToComplete = tasks.inProgress.find(task => task.id === taskId);
+
+      setTasks((prev) => ({
+        inProgress: tasks.inProgress.filter(task => task.id !== taskId),
+        completed: [...prev.completed, {...taskToComplete, status: true}]
+      }));
+    } else {
+      const taskToComplete = tasks.completed.find(task => task.id === taskId);
+
+      setTasks((prev) => ({
+        inProgress: [...prev.inProgress, {...taskToComplete, status: false}],
+        completed: tasks.completed.filter(task => task.id !== taskId)
+      }));
+    }
   };
 
   useEffect(() => {
@@ -39,7 +55,7 @@ function App() {
 
     const completedItems = tasks.completed.map((task) => (
       <TaskItem key={task.id} taskData={task} onSubmitHandle={onChangeHandle} />
-    ))
+    ));
     setCompletedItems(completedItems);
   }, [tasks]);
 
@@ -50,7 +66,7 @@ function App() {
       </div>
 
       <div id="tasksSection">
-        <Card 
+        <Card
           inProgressList={inProgressItems}
           completedList={completedItems}
         />
